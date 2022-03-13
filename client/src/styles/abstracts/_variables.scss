@@ -1,0 +1,28 @@
+$ff-primary: 'Josefin Sans', sans-serif;
+$fs-map: (
+	'10': 62.5%,
+);
+
+$primary-colors: (
+	'clr-bright-blue': hsl(220, 98%, 61%),
+	'clr-bg-first': hsl(192, 100%, 67%),
+	'clr-bg-second': hsl(280, 87%, 65%),
+);
+
+$colors: (
+	$light-theme: (
+		'clr-very-light-gray': #fafafa,
+		'clr-very-light-grayish-blue': #e4e5f1,
+		'clr-light-grayish-blue': #d2d3db,
+		'clr-dark-grayish-blue': #9394a5,
+		'clr-very-dark-grayish-blue': #484b6a,
+	),
+	$dark-theme: (
+		'clr-very-dark-blue': #161722,
+		'clr-very-dark-desaturated-blue': #25273c,
+		'clr-light-grayish-blue': #cacde8,
+		'clr-light-grayish-blue:hover': #e4e5f1,
+		'clr-dark-grayish-blue': #777a92,
+		'clr-very-dark-grayish-blue': #4d5066,
+	),
+);
