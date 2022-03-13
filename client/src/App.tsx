@@ -1,8 +1,18 @@
-import './styles/style.scss';
-import Title from './components/Title';
+import { default as bemCssModules } from 'bem-css-modules';
+import { default as AppStyles } from './App.module.scss';
+
+import Header from './components/Header/Header';
+import Todos from './components/Todos/Todos';
+
+const styled = bemCssModules(AppStyles);
 
 function App() {
-	return <Title title='Hello React' />;
+	return (
+		<main className={styled()}>
+			<Header />
+			<Todos />
+		</main>
+	);
 }
 
 export default App;

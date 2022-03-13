@@ -1,0 +1,7 @@
+@import './styles/abstracts/variables';
+@import './styles/abstracts/functions';
+
+.app {
+	min-height: 100vh;
+	background-color: map-deep-get($colors, 'dark-theme', 'clr-very-dark-blue');
+}

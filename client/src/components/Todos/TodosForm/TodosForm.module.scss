@@ -1,0 +1,39 @@
+@import './../../../styles/abstracts/mixins';
+@import './../../../styles/abstracts/functions';
+@import './../../../styles/abstracts/variables';
+@import './../../../styles/utils/placeholders';
+
+.form {
+	@include flex-mother(row, center, space-between);
+	margin: 3rem 0;
+	height: 5rem;
+	background-color: map-deep-get(
+		$colors,
+		'dark-theme',
+		'clr-very-dark-desaturated-blue'
+	);
+	&__status {
+		@include dimension(15%, 100%);
+		@include flex-mother();
+	}
+	&__btn {
+		@extend %btn;
+		padding: 1rem;
+		border: 1px solid
+			map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+		border-radius: 50%;
+		transition: 0.3s;
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+	&__input {
+		height: 100%;
+		padding-left: 2rem;
+		font-size: 1.7rem;
+		flex-grow: 1;
+		color: map-deep-get($colors, 'dark-theme', 'clr-light-grayish-blue');
+		background-color: transparent;
+		border: none;
+	}
+}
