@@ -47,4 +47,18 @@ const updateTodo = asyncHandler(
 	}
 );
 
-export { getAllTodos, createNewTodo, updateTodo };
+const deleteTodo = asyncHandler(
+	async (req: Request, res: Response, next: NextFunction) => {
+		const { id } = req.params;
+		const deletedTodo = await Todo.findByIdAndDelete(id);
+
+		res.status(201).send({
+			status: 'success',
+			data: {
+				deletedTodo,
+			},
+		});
+	}
+);
+
+export { getAllTodos, createNewTodo, updateTodo, deleteTodo };
