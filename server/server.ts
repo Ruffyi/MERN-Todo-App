@@ -2,7 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 
+// DB
+
+import { connectDB } from './db/connectDB';
+
 dotenv.config({ path: './config/.env' });
+
+connectDB();
 
 const app = express();
 
