@@ -16,4 +16,18 @@ const getAllTodos = asyncHandler(
 	}
 );
 
-export { getAllTodos };
+const createNewTodo = asyncHandler(
+	async (req: Request, res: Response, next: NextFunction) => {
+		const { name, status } = req.body;
+		const newTodo = await Todo.create({ name, status });
+
+		res.status(201).send({
+			status: 'success',
+			data: {
+				newTodo,
+			},
+		});
+	}
+);
+
+export { getAllTodos, createNewTodo };
