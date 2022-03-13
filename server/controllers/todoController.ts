@@ -30,4 +30,21 @@ const createNewTodo = asyncHandler(
 	}
 );
 
-export { getAllTodos, createNewTodo };
+const updateTodo = asyncHandler(
+	async (req: Request, res: Response, next: NextFunction) => {
+		const { id } = req.params;
+		const updatedTodo = await Todo.findByIdAndUpdate(id, req.body, {
+			new: true,
+			runValidators: true,
+		});
+
+		res.status(201).send({
+			status: 'success',
+			data: {
+				updatedTodo,
+			},
+		});
+	}
+);
+
+export { getAllTodos, createNewTodo, updateTodo };
