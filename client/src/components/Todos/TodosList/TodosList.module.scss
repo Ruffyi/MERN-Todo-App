@@ -1,0 +1,27 @@
+@import './../../../styles/abstracts/functions';
+@import './../../../styles/abstracts/mixins';
+@import './../../../styles/abstracts/variables';
+
+.todoslist {
+	background-color: map-deep-get(
+		$colors,
+		'dark-theme',
+		'clr-very-dark-desaturated-blue'
+	);
+	&__item {
+		@include flex-mother(row, center, flex-start);
+		height: 5rem;
+		margin: 1rem 0;
+		border-bottom: 1px solid
+			map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+		&--title {
+			padding-left: 2rem;
+			font-size: 1.4rem;
+			flex-grow: 1;
+			color: map-deep-get($colors, 'dark-theme', 'clr-light-grayish-blue');
+		}
+		&--complete {
+			text-decoration: line-through;
+		}
+	}
+}

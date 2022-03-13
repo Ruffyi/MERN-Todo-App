@@ -1,0 +1,26 @@
+@import './../../../styles/abstracts/functions';
+@import './../../../styles/abstracts/variables';
+@import './../../../styles/abstracts/mixins';
+@import './../../../styles/utils/placeholders';
+
+.status {
+	@include dimension(15%, 100%);
+	@include flex-mother();
+	&__btn {
+		@extend %btn;
+		padding: 1rem;
+		border: 1px solid
+			map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+		border-radius: 50%;
+		transition: 0.3s;
+		&:hover {
+			transform: scale(1.2);
+		}
+		&--complete {
+			background-image: linear-gradient(
+				map-get($primary-colors, 'clr-bg-first'),
+				map-get($primary-colors, 'clr-bg-second')
+			);
+		}
+	}
+}

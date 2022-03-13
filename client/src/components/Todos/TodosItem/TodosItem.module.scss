@@ -1,0 +1,20 @@
+@import './../../../styles/abstracts/functions';
+@import './../../../styles/abstracts/mixins';
+@import './../../../styles/abstracts/variables';
+
+.todo {
+	@include flex-mother(row, center, flex-start);
+	height: 5rem;
+	margin: 1rem 0;
+	border-bottom: 1px solid
+		map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+	&__title {
+		padding-left: 2rem;
+		font-size: 1.4rem;
+		flex-grow: 1;
+		color: map-deep-get($colors, 'dark-theme', 'clr-light-grayish-blue');
+		&--complete {
+			text-decoration: line-through;
+		}
+	}
+}
