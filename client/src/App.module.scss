@@ -4,4 +4,11 @@
 .app {
 	min-height: 100vh;
 	background-color: map-deep-get($colors, 'dark-theme', 'clr-very-dark-blue');
+	&--light {
+		background-color: map-deep-get(
+			$colors,
+			'light-theme',
+			'clr-very-light-gray'
+		);
+	}
 }

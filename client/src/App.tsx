@@ -7,10 +7,16 @@ import { getTodoData } from './features/todoSlice';
 import { RootState } from './store';
 import { useEffect } from 'react';
 
+bemCssModules.setSettings({
+	modifierDelimiter: '--',
+});
+
 const styled = bemCssModules(AppStyles);
 
 function App() {
 	const { todos } = useSelector((state: RootState) => state.todo);
+	const { theme } = useSelector((state: RootState) => state.theme);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -18,7 +24,7 @@ function App() {
 	}, [dispatch]);
 
 	return (
-		<main className={styled()}>
+		<main className={styled({ light: theme === 'light' && true })}>
 			<Header />
 			<Todos items={todos} />
 		</main>

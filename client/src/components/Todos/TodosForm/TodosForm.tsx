@@ -6,12 +6,18 @@ import Button from '../../UI/Button/Button';
 import useButton from '../../../hooks/useButton/useButton';
 import { AXIOS_APIBASE } from '../../../services/api';
 import { postFetch } from '../../../services/helpers/apiActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../../../features/todoSlice';
+import { RootState } from '../../../store';
+
+bemCssModules.setSettings({
+	modifierDelimiter: '--',
+});
 
 const styled = bemCssModules(TodosFormStyles);
 
 const TodosForm = () => {
+	const { theme } = useSelector((state: RootState) => state.theme);
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const { todoStatus, todoModifier, changeStatusHandler } = useButton(
@@ -32,15 +38,20 @@ const TodosForm = () => {
 		setName(e.target.value);
 	};
 
+	console.log(theme);
+
 	return (
-		<form className={styled()} onSubmit={submitFormHandler}>
+		<form
+			className={styled('', { light: theme === 'light' && true })}
+			onSubmit={submitFormHandler}
+		>
 			<Button
 				modifier={todoModifier}
 				status={todoStatus}
 				changeStatusHandler={changeStatusHandler}
 			/>
 			<input
-				className={styled('input')}
+				className={styled('input', { light: theme === 'light' && true })}
 				type='text'
 				placeholder='Create a new todo...'
 				value={name}

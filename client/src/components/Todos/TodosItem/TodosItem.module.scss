@@ -9,6 +9,13 @@
 	margin: 1rem 0;
 	border-bottom: 1px solid
 		map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+	&--light {
+		border-color: map-deep-get(
+			$colors,
+			'light-theme',
+			'clr-light-grayish-blue'
+		);
+	}
 	&__title {
 		padding-left: 2rem;
 		font-size: 1.4rem;
@@ -16,6 +23,9 @@
 		color: map-deep-get($colors, 'dark-theme', 'clr-light-grayish-blue');
 		&--complete {
 			text-decoration: line-through;
+		}
+		&--light {
+			color: map-deep-get($colors, 'light-theme', 'clr-very-dark-grayish-blue');
 		}
 	}
 	&__delete {

@@ -12,6 +12,13 @@
 		'dark-theme',
 		'clr-very-dark-desaturated-blue'
 	);
+	&--light {
+		background-color: map-deep-get(
+			$colors,
+			'light-theme',
+			'clr-very-light-grayish-blue'
+		);
+	}
 	&__status {
 		@include dimension(15%, 100%);
 		@include flex-mother();
@@ -24,5 +31,8 @@
 		color: map-deep-get($colors, 'dark-theme', 'clr-light-grayish-blue');
 		background-color: transparent;
 		border: none;
+		&--light {
+			color: map-deep-get($colors, 'light-theme', 'clr-very-dark-grayish-blue');
+		}
 	}
 }
