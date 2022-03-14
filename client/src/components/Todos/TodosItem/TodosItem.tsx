@@ -9,7 +9,7 @@ const styled = bemCssModules(TodosItemStyles);
 const TodosItem = ({ name, status }: ITodosItem) => {
 	const { todoModifier, todoStatus, changeStatusHandler } = useButton(
 		false,
-		'progress'
+		status
 	);
 
 	return (

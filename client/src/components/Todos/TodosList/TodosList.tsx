@@ -10,7 +10,7 @@ const TodosList = ({ items }: ITodos) => {
 	return (
 		<section className={styled()}>
 			{items.map((item: ITodosItem) => (
-				<TodosItem name={item.name} status={item.status} />
+				<TodosItem key={item._id} name={item.name} status={item.status} />
 			))}
 		</section>
 	);

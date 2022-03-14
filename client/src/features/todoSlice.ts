@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import ITodosItem from '../components/Todos/TodosItem/TodosItem.types';
+import TButtonStatus from '../hooks/useButton/useButton.types';
 import { AXIOS_APIBASE } from '../services/api';
 
 type State = {
@@ -29,6 +30,17 @@ const todoSlice = createSlice({
 	reducers: {
 		addTodo: (state: State, { payload }: PayloadAction<ITodosItem>) => {
 			state.todos.push(payload);
+		},
+		changeTodoStatus: (
+			state: State,
+			{ payload }: PayloadAction<ITodosItem>
+		) => {
+			state.todos.map((todo: ITodosItem) => {
+				if (todo._id === payload._id) {
+					todo.status = payload.status;
+				}
+				return todo;
+			});
 		},
 	},
 	extraReducers(builder) {
