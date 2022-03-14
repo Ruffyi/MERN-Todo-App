@@ -2,9 +2,8 @@ import { default as bemCssModules } from 'bem-css-modules';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { default as ActionsStyles } from './Actions.module.scss';
-import { clearCompletedTodos, filterTodos } from '../../features/todoSlice';
+import { clearCompletedTodos } from '../../features/todoSlice/todoSlice';
 import { deleteFetch } from '../../services/helpers/apiActions';
-import ITodosItem from '../Todos/TodosItem/TodosItem.types';
 import { AXIOS_APIBASE } from '../../services/api';
 import useWindowSize from '../../hooks/UseWindowSize/useWindowSize';
 import ActionButtons from '../UI/ActionButtons/ActionButtons';
@@ -20,7 +19,7 @@ const Actions = () => {
 
 	const clearCompletedTodosHandler = () => {
 		dispatch(clearCompletedTodos());
-		todos.forEach((todo: ITodosItem) => {
+		todos.forEach(todo => {
 			if (todo.status === 'complete') {
 				deleteFetch(`${AXIOS_APIBASE}/${todo._id}`);
 			}

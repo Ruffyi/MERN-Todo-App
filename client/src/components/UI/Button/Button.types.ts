@@ -1,4 +1,4 @@
-import TButtonStatus from '../../../hooks/useButton/useButton.types';
+import TButtonStatus from '../../../@types/shared/ButtonStatus.types';
 
 interface IButton {
 	changeStatusHandler: () => void;

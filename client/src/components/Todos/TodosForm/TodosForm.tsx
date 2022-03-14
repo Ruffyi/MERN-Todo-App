@@ -7,7 +7,7 @@ import useButton from '../../../hooks/useButton/useButton';
 import { AXIOS_APIBASE } from '../../../services/api';
 import { postFetch } from '../../../services/helpers/apiActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../../../features/todoSlice';
+import { addTodo } from '../../../features/todoSlice/todoSlice';
 import { RootState } from '../../../store';
 
 bemCssModules.setSettings({
@@ -27,10 +27,12 @@ const TodosForm = () => {
 		true
 	);
 
-	const submitFormHandler = (e: FormEvent) => {
+	const submitFormHandler = async (e: FormEvent) => {
 		e.preventDefault();
-		const newTodo = { name, status: todoStatus };
-		postFetch(AXIOS_APIBASE, newTodo);
+		const newTodo = await postFetch(AXIOS_APIBASE, {
+			name,
+			status: todoStatus,
+		});
 		dispatch(addTodo(newTodo));
 		setName('');
 	};

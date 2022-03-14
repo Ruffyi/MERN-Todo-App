@@ -1,4 +1,4 @@
-import ITodosItem from '../TodosItem/TodosItem.types';
+import ITodosItem from '../../../@types/shared/TodosItem.types';
 
 interface ITodos {
 	items: ITodosItem[];

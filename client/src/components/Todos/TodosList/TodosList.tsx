@@ -2,7 +2,7 @@ import { default as bemCssModules } from 'bem-css-modules';
 import { default as TodosListStyles } from './TodosList.module.scss';
 import TodosItem from '../TodosItem/TodosItem';
 import ITodos from './Todos.types';
-import ITodosItem from '../TodosItem/TodosItem.types';
+import ITodosItem from '../../../@types/shared/TodosItem.types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 

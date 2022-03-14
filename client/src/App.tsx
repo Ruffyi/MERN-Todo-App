@@ -1,10 +1,12 @@
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as AppStyles } from './App.module.scss';
+
 import Header from './components/Header/Header';
 import Todos from './components/Todos/Todos';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { getTodoData } from './features/todoSlice';
 import { RootState } from './store';
+import { getTodoData } from './features/todoSlice/todoSlice';
 import { useEffect } from 'react';
 
 bemCssModules.setSettings({
@@ -13,7 +15,7 @@ bemCssModules.setSettings({
 
 const styled = bemCssModules(AppStyles);
 
-function App() {
+const App = () => {
 	const { todos } = useSelector((state: RootState) => state.todo);
 	const { theme } = useSelector((state: RootState) => state.theme);
 
@@ -29,6 +31,6 @@ function App() {
 			<Todos items={todos} />
 		</main>
 	);
-}
+};
 
 export default App;

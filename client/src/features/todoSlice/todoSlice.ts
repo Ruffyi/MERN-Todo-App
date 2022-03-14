@@ -1,16 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AXIOS_APIBASE } from '../../services/api';
+import { ActionStatus, State } from './todoSlice.types';
+import ITodosItem from '../../@types/shared/TodosItem.types';
 import axios from 'axios';
-import { stat } from 'fs';
-import ITodosItem from '../components/Todos/TodosItem/TodosItem.types';
-import TButtonStatus from '../hooks/useButton/useButton.types';
-import { AXIOS_APIBASE } from '../services/api';
-
-type ActionStatus = 'all' | 'completed' | 'active';
-
-type State = {
-	todos: ITodosItem[];
-	filteredTodos: ITodosItem[];
-};
 
 const initialState: State = {
 	todos: [],
@@ -37,7 +29,7 @@ const todoSlice = createSlice({
 			state.todos.push(payload);
 		},
 		changeTodoStatus(state: State, { payload }: PayloadAction<ITodosItem>) {
-			state.todos = state.todos.map((todo: ITodosItem) => {
+			state.todos = state.todos.map(todo => {
 				if (todo._id === payload._id) {
 					todo.status = payload.status;
 				}
@@ -46,9 +38,7 @@ const todoSlice = createSlice({
 			state.filteredTodos = state.todos;
 		},
 		deleteTodo(state: State, { payload }: PayloadAction<string>) {
-			state.todos = state.todos.filter(
-				(todo: ITodosItem) => todo._id !== payload
-			);
+			state.todos = state.filteredTodos.filter(todo => todo._id !== payload);
 			state.filteredTodos = state.todos;
 		},
 		filterTodos(state: State, { payload }: PayloadAction<ActionStatus>) {
@@ -58,20 +48,18 @@ const todoSlice = createSlice({
 					break;
 				case 'active':
 					state.todos = state.filteredTodos.filter(
-						(todo: ITodosItem) => todo.status === 'progress'
+						todo => todo.status === 'progress'
 					);
 					break;
 				case 'completed':
 					state.todos = state.filteredTodos.filter(
-						(todo: ITodosItem) => todo.status === 'complete'
+						todo => todo.status === 'complete'
 					);
 					break;
 			}
 		},
 		clearCompletedTodos(state: State) {
-			state.todos = state.todos.filter(
-				(todo: ITodosItem) => todo.status !== 'complete'
-			);
+			state.todos = state.todos.filter(todo => todo.status !== 'complete');
 			state.filteredTodos = state.todos;
 		},
 	},

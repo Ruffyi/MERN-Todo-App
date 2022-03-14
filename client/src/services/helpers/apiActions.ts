@@ -1,8 +1,8 @@
 import axios from 'axios';
-import ITodosItem from '../../components/Todos/TodosItem/TodosItem.types';
+import ITodosItem from '../../@types/shared/TodosItem.types';
 
 const postFetch = async (url: string, data: Partial<ITodosItem>) => {
-	await axios(url, {
+	const response = await axios(url, {
 		method: 'POST',
 		data,
 		headers: {
@@ -10,7 +10,8 @@ const postFetch = async (url: string, data: Partial<ITodosItem>) => {
 		},
 	});
 
-	console.log('posted data');
+	const { data: resData } = response.data;
+	return resData.newTodo;
 };
 
 const patchFetch = async (url: string, data: Partial<ITodosItem>) => {
@@ -21,8 +22,6 @@ const patchFetch = async (url: string, data: Partial<ITodosItem>) => {
 			'Content-Type': 'application/json',
 		},
 	});
-
-	console.log('update data');
 };
 
 const deleteFetch = async (url: string) => {
@@ -32,8 +31,6 @@ const deleteFetch = async (url: string) => {
 			'Content-Type': 'application/json',
 		},
 	});
-
-	console.log('delete data');
 };
 
 export { postFetch, patchFetch, deleteFetch };

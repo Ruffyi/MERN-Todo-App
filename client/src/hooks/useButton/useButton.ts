@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import ITodosItem from '../../components/Todos/TodosItem/TodosItem.types';
-import { changeTodoStatus } from '../../features/todoSlice';
+import { changeTodoStatus } from '../../features/todoSlice/todoSlice';
 import { AXIOS_APIBASE } from '../../services/api';
 import { patchFetch } from '../../services/helpers/apiActions';
-import TButtonStatus from './useButton.types';
+import TButtonStatus from '../../@types/shared/ButtonStatus.types';
 
 const useButton = (
 	modifiers: boolean,
@@ -21,18 +20,19 @@ const useButton = (
 	}, [status]);
 
 	const changeStatusHandler = () => {
-		setTodoStatus(todoStatus === 'progress' ? 'complete' : 'progress');
+		const newTodoStatus = todoStatus === 'progress' ? 'complete' : 'progress';
+		setTodoStatus(newTodoStatus);
 		setTodoModifier(!todoModifier);
 		dispatch(
 			changeTodoStatus({
 				name: '',
 				_id,
-				status: todoStatus === 'progress' ? 'complete' : 'progress',
+				status: newTodoStatus,
 			})
 		);
 		!formBtn &&
 			patchFetch(`${AXIOS_APIBASE}/${_id}`, {
-				status: todoStatus === 'progress' ? 'complete' : 'progress',
+				status: newTodoStatus,
 			});
 	};
 

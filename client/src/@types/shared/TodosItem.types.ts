@@ -1,4 +1,4 @@
-import TButtonStatus from '../../../hooks/useButton/useButton.types';
+import TButtonStatus from './ButtonStatus.types';
 
 interface ITodosItem {
 	_id?: string;

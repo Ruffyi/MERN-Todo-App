@@ -1,7 +1,7 @@
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as ActionButtonsStyles } from './ActionButtons.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterTodos } from '../../../features/todoSlice';
+import { filterTodos } from '../../../features/todoSlice/todoSlice';
 import TAction from './ActionButtons.types';
 import { RootState } from '../../../store';
 
