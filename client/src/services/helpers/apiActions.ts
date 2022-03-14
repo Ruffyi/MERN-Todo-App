@@ -25,4 +25,15 @@ const patchFetch = async (url: string, data: Partial<ITodosItem>) => {
 	console.log('update data');
 };
 
-export { postFetch, patchFetch };
+const deleteFetch = async (url: string) => {
+	await axios(url, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	console.log('delete data');
+};
+
+export { postFetch, patchFetch, deleteFetch };

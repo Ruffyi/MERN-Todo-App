@@ -17,8 +17,6 @@ function App() {
 		dispatch(getTodoData());
 	}, [dispatch]);
 
-	console.log(todos);
-
 	return (
 		<main className={styled()}>
 			<Header />

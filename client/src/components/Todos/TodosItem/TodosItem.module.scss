@@ -1,6 +1,7 @@
 @import './../../../styles/abstracts/functions';
 @import './../../../styles/abstracts/mixins';
 @import './../../../styles/abstracts/variables';
+@import './../../../styles/utils/placeholders';
 
 .todo {
 	@include flex-mother(row, center, flex-start);
@@ -16,5 +17,9 @@
 		&--complete {
 			text-decoration: line-through;
 		}
+	}
+	&__delete {
+		@extend %btn;
+		margin-right: 2rem;
 	}
 }

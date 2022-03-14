@@ -16,7 +16,9 @@ const TodosForm = () => {
 	const [name, setName] = useState('');
 	const { todoStatus, todoModifier, changeStatusHandler } = useButton(
 		false,
-		'progress'
+		'progress',
+		'',
+		true
 	);
 
 	const submitFormHandler = (e: FormEvent) => {

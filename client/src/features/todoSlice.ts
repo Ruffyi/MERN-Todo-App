@@ -28,31 +28,33 @@ const todoSlice = createSlice({
 	name: 'todos',
 	initialState,
 	reducers: {
-		addTodo: (state: State, { payload }: PayloadAction<ITodosItem>) => {
+		addTodo(state: State, { payload }: PayloadAction<ITodosItem>) {
 			state.todos.push(payload);
 		},
-		changeTodoStatus: (
-			state: State,
-			{ payload }: PayloadAction<ITodosItem>
-		) => {
-			state.todos.map((todo: ITodosItem) => {
+		changeTodoStatus(state: State, { payload }: PayloadAction<ITodosItem>) {
+			state.todos = state.todos.map((todo: ITodosItem) => {
 				if (todo._id === payload._id) {
 					todo.status = payload.status;
 				}
 				return todo;
 			});
 		},
+		deleteTodo(state: State, { payload }: PayloadAction<string>) {
+			state.todos = state.todos.filter(
+				(todo: ITodosItem) => todo._id !== payload
+			);
+		},
 	},
 	extraReducers(builder) {
 		builder.addCase(
 			getTodoData.fulfilled,
 			(state: State, { payload }: PayloadAction<ITodosItem[]>) => {
-				state.todos = payload;
+				state.todos = [...payload];
 			}
 		);
 	},
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo, changeTodoStatus } = todoSlice.actions;
 
 export default todoSlice.reducer;

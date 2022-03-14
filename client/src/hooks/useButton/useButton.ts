@@ -4,7 +4,12 @@ import { AXIOS_APIBASE } from '../../services/api';
 import { patchFetch } from '../../services/helpers/apiActions';
 import TButtonStatus from './useButton.types';
 
-const useButton = (modifiers: boolean, status: TButtonStatus, _id?: string) => {
+const useButton = (
+	modifiers: boolean,
+	status: TButtonStatus,
+	_id?: string,
+	formBtn?: boolean
+) => {
 	const [todoModifier, setTodoModifier] = useState(modifiers);
 	const [todoStatus, setTodoStatus] = useState<TButtonStatus>(status);
 
@@ -15,9 +20,10 @@ const useButton = (modifiers: boolean, status: TButtonStatus, _id?: string) => {
 	const changeStatusHandler = () => {
 		setTodoStatus(todoStatus === 'progress' ? 'complete' : 'progress');
 		setTodoModifier(!todoModifier);
-		patchFetch(`${AXIOS_APIBASE}/${_id}`, {
-			status: todoStatus === 'progress' ? 'complete' : 'progress',
-		});
+		!formBtn &&
+			patchFetch(`${AXIOS_APIBASE}/${_id}`, {
+				status: todoStatus === 'progress' ? 'complete' : 'progress',
+			});
 	};
 
 	return { todoModifier, todoStatus, changeStatusHandler } as const;
