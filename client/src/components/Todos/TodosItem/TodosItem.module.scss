@@ -6,9 +6,12 @@
 .todo {
 	@include flex-mother(row, center, flex-start);
 	height: 5rem;
-	margin: 1rem 0;
 	border-bottom: 1px solid
 		map-deep-get($colors, 'dark-theme', 'clr-very-dark-grayish-blue');
+	&:not(:last-child) {
+		margin: 1rem 0;
+	}
+
 	&--light {
 		border-color: map-deep-get(
 			$colors,

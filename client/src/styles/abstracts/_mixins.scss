@@ -28,3 +28,9 @@
 		transform: translate(-50%, -50%);
 	}
 }
+
+@mixin mq($media) {
+	@media (max-width: $media) {
+		@content;
+	}
+}

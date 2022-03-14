@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTodoData } from './features/todoSlice';
 import { RootState } from './store';
 import { useEffect } from 'react';
+import Actions from './components/Actions/Actions';
 
 bemCssModules.setSettings({
 	modifierDelimiter: '--',
