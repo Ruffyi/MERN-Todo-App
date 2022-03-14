@@ -19,32 +19,6 @@
 			'clr-very-light-grayish-blue'
 		);
 	}
-	&__buttons {
-		@include mq(59rem) {
-			display: none;
-		}
-	}
-	&__mobile {
-		display: none;
-		text-align: center;
-		@include mq(59rem) {
-			@include flex-mother();
-			background-color: map-deep-get(
-				$colors,
-				'dark-theme',
-				'clr-very-dark-desaturated-blue'
-			);
-			height: 5rem;
-			margin-top: 2rem;
-		}
-		&--light {
-			background-color: map-deep-get(
-				$colors,
-				'light-theme',
-				'clr-very-light-grayish-blue'
-			);
-		}
-	}
 	&__items {
 		font-weight: 700;
 		font-size: 1.2rem;

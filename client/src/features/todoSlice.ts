@@ -72,6 +72,7 @@ const todoSlice = createSlice({
 			state.todos = state.todos.filter(
 				(todo: ITodosItem) => todo.status !== 'complete'
 			);
+			state.filteredTodos = state.todos;
 		},
 	},
 	extraReducers(builder) {

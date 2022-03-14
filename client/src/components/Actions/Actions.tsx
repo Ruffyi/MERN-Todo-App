@@ -6,12 +6,15 @@ import { clearCompletedTodos, filterTodos } from '../../features/todoSlice';
 import { deleteFetch } from '../../services/helpers/apiActions';
 import ITodosItem from '../Todos/TodosItem/TodosItem.types';
 import { AXIOS_APIBASE } from '../../services/api';
+import useWindowSize from '../../hooks/UseWindowSize/useWindowSize';
+import ActionButtons from '../UI/ActionButtons/ActionButtons';
 
 const styled = bemCssModules(ActionsStyles);
 
 const Actions = () => {
 	const { theme } = useSelector((state: RootState) => state.theme);
 	const { todos } = useSelector((state: RootState) => state.todo);
+	const { windowSize } = useWindowSize();
 
 	const dispatch = useDispatch();
 
@@ -28,50 +31,12 @@ const Actions = () => {
 		<>
 			<div className={styled('', { light: theme === 'light' && true })}>
 				<p className={styled('items')}>{todos.length} items left</p>
-				<div className={styled('buttons')}>
-					<button
-						className={styled('btn')}
-						onClick={() => dispatch(filterTodos('all'))}
-					>
-						All
-					</button>
-					<button
-						className={styled('btn')}
-						onClick={() => dispatch(filterTodos('active'))}
-					>
-						Active
-					</button>
-					<button
-						className={styled('btn')}
-						onClick={() => dispatch(filterTodos('completed'))}
-					>
-						Completed
-					</button>
-				</div>
+				<ActionButtons />
 				<button className={styled('btn')} onClick={clearCompletedTodosHandler}>
 					Clear Completed
 				</button>
 			</div>
-			<div className={styled('mobile', { light: theme === 'light' && true })}>
-				<button
-					className={styled('btn')}
-					onClick={() => dispatch(filterTodos('all'))}
-				>
-					All
-				</button>
-				<button
-					className={styled('btn')}
-					onClick={() => dispatch(filterTodos('active'))}
-				>
-					Active
-				</button>
-				<button
-					className={styled('btn')}
-					onClick={() => dispatch(filterTodos('completed'))}
-				>
-					Completed
-				</button>
-			</div>
+			{windowSize.width < 950 && <ActionButtons type='mobile' />}
 		</>
 	);
 };

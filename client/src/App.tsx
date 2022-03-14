@@ -19,8 +19,6 @@ function App() {
 
 	const dispatch = useDispatch();
 
-	console.log(todos);
-
 	useEffect(() => {
 		dispatch(getTodoData());
 	}, [dispatch]);

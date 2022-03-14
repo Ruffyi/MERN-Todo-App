@@ -1,0 +1,41 @@
+@import './../../../styles/abstracts/functions';
+@import './../../../styles/abstracts/mixins';
+@import './../../../styles/abstracts/variables';
+@import './../../../styles/utils/placeholders';
+
+.buttons {
+	@include mq(59rem) {
+		display: none;
+	}
+	&__btn {
+		@extend %btn;
+		margin: 0 1rem;
+		color: map-deep-get($colors, 'dark-theme', 'clr-dark-grayish-blue');
+		font-size: 1.2rem;
+		transition: color 0.3s;
+		&:hover {
+			color: map-get($primary-colors, 'clr-bright-blue');
+		}
+	}
+	&__mobile {
+		display: none;
+		text-align: center;
+		@include mq(59rem) {
+			@include flex-mother();
+			background-color: map-deep-get(
+				$colors,
+				'dark-theme',
+				'clr-very-dark-desaturated-blue'
+			);
+			height: 5rem;
+			margin-top: 2rem;
+		}
+		&--light {
+			background-color: map-deep-get(
+				$colors,
+				'light-theme',
+				'clr-very-light-grayish-blue'
+			);
+		}
+	}
+}

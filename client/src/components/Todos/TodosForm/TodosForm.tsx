@@ -32,6 +32,7 @@ const TodosForm = () => {
 		const newTodo = { name, status: todoStatus };
 		postFetch(AXIOS_APIBASE, newTodo);
 		dispatch(addTodo(newTodo));
+		setName('');
 	};
 
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
