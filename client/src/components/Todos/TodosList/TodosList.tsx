@@ -7,13 +7,11 @@ import ITodosItem from '../TodosItem/TodosItem.types';
 const styled = bemCssModules(TodosListStyles);
 
 const TodosList = ({ items }: ITodos) => {
-	console.log(items);
 	return (
 		<section className={styled()}>
-			{items &&
-				items.map((item: ITodosItem) => (
-					<TodosItem name={item.name} status={item.status} />
-				))}
+			{items.map((item: ITodosItem) => (
+				<TodosItem name={item.name} status={item.status} />
+			))}
 		</section>
 	);
 };

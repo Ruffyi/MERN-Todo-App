@@ -4,13 +4,15 @@ import { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import Button from '../../UI/Button/Button';
 import useButton from '../../../hooks/useButton/useButton';
-import useFetch from '../../../hooks/useFetch/useFetch';
 import { AXIOS_APIBASE } from '../../../services/api';
 import { postFetch } from '../../../services/helpers/apiActions';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../../features/todoSlice';
 
 const styled = bemCssModules(TodosFormStyles);
 
 const TodosForm = () => {
+	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const { todoStatus, todoModifier, changeStatusHandler } = useButton(
 		false,
@@ -20,6 +22,7 @@ const TodosForm = () => {
 	const submitFormHandler = (e: FormEvent) => {
 		e.preventDefault();
 		const newTodo = { name, status: todoStatus };
+		dispatch(addTodo(newTodo));
 		postFetch(AXIOS_APIBASE, newTodo);
 	};
 
