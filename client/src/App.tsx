@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTodoData } from './features/todoSlice';
 import { RootState } from './store';
 import { useEffect } from 'react';
-import Actions from './components/Actions/Actions';
 
 bemCssModules.setSettings({
 	modifierDelimiter: '--',
@@ -19,6 +18,8 @@ function App() {
 	const { theme } = useSelector((state: RootState) => state.theme);
 
 	const dispatch = useDispatch();
+
+	console.log(todos);
 
 	useEffect(() => {
 		dispatch(getTodoData());

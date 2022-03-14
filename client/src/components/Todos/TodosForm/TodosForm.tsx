@@ -30,15 +30,13 @@ const TodosForm = () => {
 	const submitFormHandler = (e: FormEvent) => {
 		e.preventDefault();
 		const newTodo = { name, status: todoStatus };
-		dispatch(addTodo(newTodo));
 		postFetch(AXIOS_APIBASE, newTodo);
+		dispatch(addTodo(newTodo));
 	};
 
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setName(e.target.value);
 	};
-
-	console.log(theme);
 
 	return (
 		<form
