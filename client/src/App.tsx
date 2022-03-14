@@ -1,6 +1,5 @@
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as AppStyles } from './App.module.scss';
-
 import Header from './components/Header/Header';
 import Todos from './components/Todos/Todos';
 
@@ -10,7 +9,7 @@ function App() {
 	return (
 		<main className={styled()}>
 			<Header />
-			<Todos />
+			<Todos items={[]} />
 		</main>
 	);
 }

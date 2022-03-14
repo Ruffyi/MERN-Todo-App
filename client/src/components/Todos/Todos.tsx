@@ -3,15 +3,16 @@ import { default as TodosStyles } from './Todos.module.scss';
 import TodosHeader from './TodosHeader/TodosHeader';
 import TodosForm from './TodosForm/TodosForm';
 import TodosList from './TodosList/TodosList';
+import ITodos from './TodosList/Todos.types';
 
 const styled = bemCssModules(TodosStyles);
 
-const Todos = () => {
+const Todos = ({ items }: ITodos) => {
 	return (
 		<section className={styled()}>
 			<TodosHeader />
 			<TodosForm />
-			<TodosList />
+			<TodosList items={items} />
 		</section>
 	);
 };

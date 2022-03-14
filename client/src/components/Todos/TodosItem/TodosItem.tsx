@@ -2,10 +2,11 @@ import { default as bemCssModules } from 'bem-css-modules';
 import { default as TodosItemStyles } from './TodosItem.module.scss';
 import Button from '../../UI/Button/Button';
 import useButton from '../../../hooks/useButton/useButton';
+import ITodosItem from './TodosItem.types';
 
 const styled = bemCssModules(TodosItemStyles);
 
-const TodosItem = () => {
+const TodosItem = ({ name, status }: ITodosItem) => {
 	const { todoModifier, todoStatus, changeStatusHandler } = useButton(
 		false,
 		'progress'
@@ -18,9 +19,7 @@ const TodosItem = () => {
 				changeStatusHandler={changeStatusHandler}
 				modifier={todoModifier}
 			/>
-			<h2 className={styled('title', { complete: todoModifier })}>
-				Complete online JavaScript course
-			</h2>
+			<h2 className={styled('title', { complete: todoModifier })}>{name}</h2>
 		</div>
 	);
 };

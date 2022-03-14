@@ -11,6 +11,7 @@ import todoRouter from './routes/todoRoutes';
 // Middlewares
 import { NotFoundPage } from './controllers/errorController';
 import globalErrorMiddleware from './controllers/errorController';
+import cors from 'cors';
 
 dotenv.config({ path: './config/.env' });
 
@@ -19,6 +20,7 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 if (process.env.PROJECT_MODE === 'development') {
 	app.use(morgan('dev'));

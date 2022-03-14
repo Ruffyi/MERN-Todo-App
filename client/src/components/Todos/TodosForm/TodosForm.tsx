@@ -4,6 +4,9 @@ import { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import Button from '../../UI/Button/Button';
 import useButton from '../../../hooks/useButton/useButton';
+import useFetch from '../../../hooks/useFetch/useFetch';
+import { AXIOS_APIBASE } from '../../../services/api';
+import { postFetch } from '../../../services/helpers/apiActions';
 
 const styled = bemCssModules(TodosFormStyles);
 
@@ -16,7 +19,8 @@ const TodosForm = () => {
 
 	const submitFormHandler = (e: FormEvent) => {
 		e.preventDefault();
-		console.log(name, todoStatus);
+		const newTodo = { name, status: todoStatus };
+		postFetch(AXIOS_APIBASE, newTodo);
 	};
 
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
