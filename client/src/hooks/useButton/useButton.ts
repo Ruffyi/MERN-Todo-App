@@ -8,7 +8,7 @@ import TButtonStatus from '../../@types/shared/ButtonStatus.types';
 const useButton = (
 	modifiers: boolean,
 	status: TButtonStatus,
-	_id?: string,
+	_id: string,
 	formBtn?: boolean
 ) => {
 	const [todoModifier, setTodoModifier] = useState(modifiers);
@@ -25,7 +25,6 @@ const useButton = (
 		setTodoModifier(!todoModifier);
 		dispatch(
 			changeTodoStatus({
-				name: '',
 				_id,
 				status: newTodoStatus,
 			})

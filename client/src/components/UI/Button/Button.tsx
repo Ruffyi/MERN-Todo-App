@@ -1,20 +1,22 @@
-import iconCheck from './../../../assets/svg/icon-check.svg';
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as BtnStyles } from './Button.module.scss';
+
 import IButton from './Button.types';
+
+import iconCheck from './../../../assets/svg/icon-check.svg';
 
 bemCssModules.setSettings({
 	modifierDelimiter: '--',
 });
 
-const styledBtn = bemCssModules(BtnStyles);
+const styled = bemCssModules(BtnStyles);
 
 const Button = ({ changeStatusHandler, status, modifier }: IButton) => {
 	return (
-		<div className={styledBtn('')}>
+		<div className={styled('')}>
 			<div
 				onClick={changeStatusHandler}
-				className={styledBtn('btn', { complete: modifier })}
+				className={styled('btn', { complete: modifier })}
 				role='button'
 			>
 				{status === 'complete' && (

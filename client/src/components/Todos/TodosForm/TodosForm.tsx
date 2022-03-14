@@ -29,6 +29,7 @@ const TodosForm = () => {
 
 	const submitFormHandler = async (e: FormEvent) => {
 		e.preventDefault();
+		if (!name.trim().length) return;
 		const newTodo = await postFetch(AXIOS_APIBASE, {
 			name,
 			status: todoStatus,

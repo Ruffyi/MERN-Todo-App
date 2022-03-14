@@ -1,7 +1,7 @@
 import TButtonStatus from './ButtonStatus.types';
 
 interface ITodosItem {
-	_id?: string;
+	_id: string;
 	name: string;
 	status: TButtonStatus;
 }

@@ -22,8 +22,6 @@ const TodosItem = ({ _id, name, status }: ITodosItem) => {
 	const dispatch = useDispatch();
 
 	const handleDeleteTodo = () => {
-		if (typeof _id !== 'string') return;
-
 		dispatch(deleteTodo(_id));
 		deleteFetch(`${AXIOS_APIBASE}/${_id}`);
 	};

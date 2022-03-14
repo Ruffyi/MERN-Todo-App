@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AXIOS_APIBASE } from '../../services/api';
-import { ActionStatus, State } from './todoSlice.types';
+import { ActionStatus, State, TChangeTodoStatus } from './todoSlice.types';
 import ITodosItem from '../../@types/shared/TodosItem.types';
 import axios from 'axios';
 
@@ -27,8 +27,12 @@ const todoSlice = createSlice({
 	reducers: {
 		addTodo(state: State, { payload }: PayloadAction<ITodosItem>) {
 			state.todos.push(payload);
+			state.filteredTodos.push(payload);
 		},
-		changeTodoStatus(state: State, { payload }: PayloadAction<ITodosItem>) {
+		changeTodoStatus(
+			state: State,
+			{ payload }: PayloadAction<TChangeTodoStatus>
+		) {
 			state.todos = state.todos.map(todo => {
 				if (todo._id === payload._id) {
 					todo.status = payload.status;

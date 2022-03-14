@@ -17,19 +17,22 @@
 			color: map-get($primary-colors, 'clr-bright-blue');
 		}
 	}
+	&--light {
+		background-color: map-deep-get(
+			$colors,
+			'light-theme',
+			'clr-very-light-grayish-blue'
+		);
+	}
 	&__mobile {
-		display: none;
-		text-align: center;
-		@include mq(59rem) {
-			@include flex-mother();
-			background-color: map-deep-get(
-				$colors,
-				'dark-theme',
-				'clr-very-dark-desaturated-blue'
-			);
-			height: 5rem;
-			margin-top: 2rem;
-		}
+		@include flex-mother();
+		height: 5rem;
+		margin-top: 2rem;
+		background-color: map-deep-get(
+			$colors,
+			'dark-theme',
+			'clr-very-dark-desaturated-blue'
+		);
 		&--light {
 			background-color: map-deep-get(
 				$colors,

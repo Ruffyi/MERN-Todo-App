@@ -16,7 +16,6 @@ bemCssModules.setSettings({
 const styled = bemCssModules(AppStyles);
 
 const App = () => {
-	const { todos } = useSelector((state: RootState) => state.todo);
 	const { theme } = useSelector((state: RootState) => state.theme);
 
 	const dispatch = useDispatch();
@@ -28,7 +27,7 @@ const App = () => {
 	return (
 		<main className={styled({ light: theme === 'light' && true })}>
 			<Header />
-			<Todos items={todos} />
+			<Todos />
 		</main>
 	);
 };
