@@ -6,10 +6,11 @@ import ITodosItem from './TodosItem.types';
 
 const styled = bemCssModules(TodosItemStyles);
 
-const TodosItem = ({ name, status }: ITodosItem) => {
+const TodosItem = ({ _id, name, status }: ITodosItem) => {
 	const { todoModifier, todoStatus, changeStatusHandler } = useButton(
 		false,
-		status
+		status,
+		_id
 	);
 
 	return (

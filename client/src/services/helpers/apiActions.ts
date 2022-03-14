@@ -13,4 +13,16 @@ const postFetch = async (url: string, data: Partial<ITodosItem>) => {
 	console.log('posted data');
 };
 
-export { postFetch };
+const patchFetch = async (url: string, data: Partial<ITodosItem>) => {
+	await axios(url, {
+		method: 'PATCH',
+		data,
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	console.log('update data');
+};
+
+export { postFetch, patchFetch };
