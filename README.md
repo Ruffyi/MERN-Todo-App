@@ -1,4 +1,4 @@
-# MERN-Todo-App
+# MERN-Todo-App - RuffyiSan
 
 ## Table of contents
 * [General info](#general-info)
@@ -6,19 +6,27 @@
 * [Setup](#setup)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+This project is builded via node + typescript and react + typescript
 	
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+** BACKEND **
+* NodeJS
+* Typescript
+* MongoDB (Mongoose)
+* Express
+** FRONTEND **
+* React
+* SCSS
+* CSS Modules + BemCSSModules
+* React Redux(Toolkit)
 	
 ## Setup
 To run this project, install it locally using npm:
 
 ```
-$ cd ../lorem
 $ npm install
-$ npm start
+
 ```
+First start the node server via npm run start:server:(dev|prod) -> Server using 3000 port
+After start the react via cd client -> npm start -> (Yes for another port)
