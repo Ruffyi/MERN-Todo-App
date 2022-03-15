@@ -22,11 +22,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(resolve(__dirname, '../client/build')));
 
-app.get('*', (req: Request, res: Response) => {
-	res.sendFile(resolve(__dirname, '../client/build', 'index.html'));
-});
+if (process.env.PROJECT_MODE === 'production') {
+	app.use(express.static(resolve(__dirname, './client/build')));
+
+	app.get('*', (req: Request, res: Response) => {
+		res.sendFile(resolve(__dirname, './client/build', 'index.html'));
+	});
+}
 
 if (process.env.PROJECT_MODE === 'development') {
 	app.use(morgan('dev'));
