@@ -13,13 +13,8 @@ const TodosList = () => {
 
 	return (
 		<section className={styled('', { light: theme === 'light' && true })}>
-			{todos.map((item: ITodosItem) => (
-				<TodosItem
-					_id={item._id}
-					key={item._id}
-					name={item.name}
-					status={item.status}
-				/>
+			{todos.map(({ _id, name, status }) => (
+				<TodosItem _id={_id} key={_id} name={name} status={status} />
 			))}
 		</section>
 	);

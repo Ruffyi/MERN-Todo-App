@@ -5,23 +5,15 @@ import iconMoon from './../../../assets/svg/icon-moon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../../features/themeSlice/themeSlice';
 import { RootState } from '../../../store';
-import useLocalStorage from '../../../hooks/useLocalStorage/useLocalStorage';
-import { useEffect } from 'react';
 
 const styled = bemCssModules(TodosHeaderStyles);
 
 const TodosHeader = () => {
 	const { theme } = useSelector((state: RootState) => state.theme);
-	const [projectTheme, setProjectTheme] = useLocalStorage('theme', 'dark');
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		setProjectTheme(theme);
-	}, []);
-
 	const changeThemeHandler = () => {
-		dispatch(toggleTheme());
-		setProjectTheme(theme === 'dark' ? 'light' : 'dark');
+		dispatch(toggleTheme('theme'));
 	};
 
 	return (

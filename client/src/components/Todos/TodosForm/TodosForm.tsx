@@ -18,28 +18,28 @@ const styled = bemCssModules(TodosFormStyles);
 
 const TodosForm = () => {
 	const { theme } = useSelector((state: RootState) => state.theme);
-	const dispatch = useDispatch();
-	const [name, setName] = useState('');
+	const [todoName, setTodoName] = useState('');
 	const { todoStatus, todoModifier, changeStatusHandler } = useButton(
 		false,
 		'progress',
 		'',
 		true
 	);
+	const dispatch = useDispatch();
 
 	const submitFormHandler = async (e: FormEvent) => {
 		e.preventDefault();
-		if (!name.trim().length) return;
+		if (!todoName.trim().length) return;
 		const newTodo = await postFetch(AXIOS_APIBASE, {
-			name,
+			name: todoName,
 			status: todoStatus,
 		});
 		dispatch(addTodo(newTodo));
-		setName('');
+		setTodoName('');
 	};
 
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setName(e.target.value);
+		setTodoName(e.target.value);
 	};
 
 	return (
@@ -56,7 +56,7 @@ const TodosForm = () => {
 				className={styled('input', { light: theme === 'light' && true })}
 				type='text'
 				placeholder='Create a new todo...'
-				value={name}
+				value={todoName}
 				onChange={inputChangeHandler}
 			/>
 		</form>

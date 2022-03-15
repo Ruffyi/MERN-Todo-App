@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
 import { getTodoData } from './features/todoSlice/todoSlice';
 import { useEffect } from 'react';
+import { addThemeFromStorage } from './features/themeSlice/themeSlice';
 
 bemCssModules.setSettings({
 	modifierDelimiter: '--',
@@ -20,8 +21,12 @@ const App = () => {
 
 	const dispatch = useDispatch();
 
+	console.log(theme);
+
 	useEffect(() => {
+		const storageTheme = localStorage.getItem('theme') || 'dark';
 		dispatch(getTodoData());
+		dispatch(addThemeFromStorage(storageTheme));
 	}, [dispatch]);
 
 	return (
