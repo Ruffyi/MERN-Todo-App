@@ -3,6 +3,10 @@ import { Request, Response, NextFunction } from 'express';
 import Todo from '../models/todoModel/todoModel';
 import asyncHandler from 'express-async-handler';
 
+// @desc Get all todos
+// @route GET /todos
+// @access Public
+
 const getAllTodos = asyncHandler(
 	async (req: Request, res: Response, next: NextFunction) => {
 		const todos = await Todo.find({});
@@ -15,6 +19,10 @@ const getAllTodos = asyncHandler(
 		});
 	}
 );
+
+// @desc Create new todo
+// @route POST /todos
+// @access Public
 
 const createNewTodo = asyncHandler(
 	async (req: Request, res: Response, next: NextFunction) => {
@@ -29,6 +37,10 @@ const createNewTodo = asyncHandler(
 		});
 	}
 );
+
+// @desc Update todo
+// @route POST /todos/:id
+// @access Public
 
 const updateTodo = asyncHandler(
 	async (req: Request, res: Response, next: NextFunction) => {
@@ -46,6 +58,10 @@ const updateTodo = asyncHandler(
 		});
 	}
 );
+
+// @desc Delete todo
+// @route POST /todos/:id
+// @access Public
 
 const deleteTodo = asyncHandler(
 	async (req: Request, res: Response, next: NextFunction) => {
