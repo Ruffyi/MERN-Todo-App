@@ -35,7 +35,7 @@ if (process.env.PROJECT_MODE === 'development') {
 	app.use(morgan('dev'));
 }
 
-const SERVER_PORT = process.env.SERVER_PORT || 3000;
+const SERVER_PORT = process.env.SERVER_PORT || 5000;
 
 app.use('/api/v1/todos', todoRouter);
 
