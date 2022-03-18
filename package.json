@@ -11,7 +11,7 @@
 	},
 	"name": "server",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "server.ts",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.0",
 		"@types/cors": "^2.8.12",
@@ -188,11 +188,13 @@
 		"start:server:dev": "nodemon ./server.ts --watch",
 		"start:server:prod": "set PROJECT_MODE=production& nodemon server.ts --watch",
 		"build": "cd client && npm run build",
+		"post-install": "tsc",
 		"install-client": "cd client && npm install",
 		"heroku-postbuild": "npm run install-client && npm run build",
-		"server": "node server.ts",
+		"server": "node dist/server.ts",
 		"develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-		"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+		"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+		"postinstall": "npm run build && npm run server"
 	},
 	"keywords": [],
 	"author": "",
