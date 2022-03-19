@@ -187,7 +187,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start:server:dev": "nodemon ./server.ts --watch",
 		"start:server:prod": "set PROJECT_MODE=production& nodemon server.ts --watch",
-		"start": "node ./dist/server.js",
+		"start": "node ./server/dist/server.js",
 		"postinstall": "cd server && tsc",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install  --prefix client && npm run build --prefix client"
 	},
