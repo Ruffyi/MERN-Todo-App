@@ -188,7 +188,7 @@
 		"start:server:dev": "nodemon ./server.ts --watch",
 		"start:server:prod": "set PROJECT_MODE=production& nodemon server.ts --watch",
 		"start": "node ./dist/server.js",
-		"postinstall": "tsc",
+		"postinstall": "cd server && tsc",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install  --prefix client && npm run build --prefix client"
 	},
 	"keywords": [],
